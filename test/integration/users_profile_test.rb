@@ -19,4 +19,10 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
       assert_match micropost.content, response.body
     end
   end
+  
+  test "stats on the home and profile pages" do
+    assert_not @user.following.empty?
+    assert_equal @user.following.count, 2
+    assert_equal @user.followers.count, 2
+  end
 end
